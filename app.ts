@@ -6,13 +6,13 @@
 const ANCHOCELULA     = 10;
 const ALTOCELULA      = 10;
 const ELEMENTOCANVAS  = 'tablero';
-const TIEMPOANIMACION = 1000/2;         
+const TIEMPOANIMACION = 1000/10;         
 
 class Juego {
 	private elementoHTML;
 	private contexto;
 	private dimensiones = { ancho: 0, alto: 0 };
-	private celula       = { ancho: 0, alto: 0, cantidadX: 0, cantidadY: 0 };
+	private celula      = { ancho: 0, alto: 0, cantidadX: 0, cantidadY: 0 };
 	private mundo;
 	private buffer;
 
@@ -20,7 +20,7 @@ class Juego {
 		this.elementoHTML = document.getElementById(ELEMENTOCANVAS);
 		this.contexto     = this.elementoHTML.getContext('2d');
 		this.dimensiones  = { ancho: this.elementoHTML.width, alto: this.elementoHTML.height };
-		this.celula        = { ancho: ANCHOCELULA, alto: ALTOCELULA, cantidadX: (this.dimensiones.ancho / ANCHOCELULA), cantidadY: (this.dimensiones.alto / ALTOCELULA) };
+		this.celula       = { ancho: ANCHOCELULA, alto: ALTOCELULA, cantidadX: (this.dimensiones.ancho / ANCHOCELULA), cantidadY: (this.dimensiones.alto / ALTOCELULA) };
 		// Inicalizacion de matrices
 		this.mundo        = [];
 		this.buffer       = [];
@@ -39,6 +39,10 @@ class Juego {
 		setTimeout(this.iniciarMotor, TIEMPOANIMACION);
 	}
 
+	public limpiar() {
+		this.contexto.clearRect(0, 0, this.dimensiones.ancho, this.dimensiones.alto);
+	}
+
 	public dibujar() {
 		for(let i=0; i<this.celula.cantidadX; i++) {
 			for(let j=0; j<this.celula.cantidadY; j++) {
@@ -50,16 +54,27 @@ class Juego {
 	}
 
 	public actualizar() {
-		this.copiarEnBuffer();
+		this.copiarBuffer(true);
 		this.obtenerVecinos();
 		this.evaluarMatrizMundo();
-		this.cargarBuffer();
+		this.copiarBuffer(false);
 	}
 
-	public cargarBuffer() {
+	public copiarBuffer(sentido: boolean = true) {
 		for(let i=0; i<this.celula.cantidadX; i++) {
 			for(let j=0; j<this.celula.cantidadY; j++) {
-				this.mundo[i][j] = this.buffer[i][j];
+				if(sentido)
+					this.buffer[i][j] = this.mundo[i][j];
+				else
+					this.mundo[i][j] = this.buffer[i][j];
+			}
+		}
+	}
+
+	public obtenerVecinos() {
+		for(let i=0; i<this.celula.cantidadX; i++) {
+			for(let j=0; j<this.celula.cantidadY; j++) {
+				this.buffer[i][j] = this.contarVecinos(i, j);
 			}
 		}
 	}
@@ -81,22 +96,6 @@ class Juego {
 			}
 		}
 		return 0;
-	}
-
-	public copiarEnBuffer() {
-		for(let i=0; i<this.celula.cantidadX; i++) {
-			for(let j=0; j<this.celula.cantidadY; j++) {
-				this.buffer[i][j] = this.mundo[i][j];
-			}
-		}
-	}
-
-	public obtenerVecinos() {
-		for(let i=0; i<this.celula.cantidadX; i++) {
-			for(let j=0; j<this.celula.cantidadY; j++) {
-				this.buffer[i][j] = this.contarVecinos(i, j);
-			}
-		}
 	}
 
 	public contarVecinos(posX, posY) {
@@ -130,10 +129,6 @@ class Juego {
 				this.buffer[i][j] = 0;
 			}
 		}
-	}
-
-	public limpiar() {
-		this.contexto.clearRect(0, 0, this.dimensiones.ancho, this.dimensiones.alto);
 	}
 
 	public generarAleatorio(min: number, max: number) {
