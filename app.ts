@@ -52,6 +52,11 @@ class Juego {
 		}
 	}
 
+	public reiniciar() {
+		clearTimeout(this.temporizador);
+		this.iniciar();
+	}
+
 	public limpiar() {
 		this.contexto.clearRect(0, 0, this.dimensiones.ancho, this.dimensiones.alto);
 	}
