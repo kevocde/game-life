@@ -22,7 +22,7 @@
 	background-color: #fff;
 	padding: 0px 0px 10px 0px;
 	border-radius: 2px;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .color-fondo {
@@ -47,4 +47,15 @@ canvas {
 	padding: 0px 5px;
 	position: absolute;
 	right: 20px;
+}
+
+.btn {
+	border: none;	
+	background-color: #3F51B5;
+	padding: 0px 5px;
+	color: white;
+	width: 100px;
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }

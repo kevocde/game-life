@@ -6,7 +6,7 @@
 const ANCHOCELULA     = 10;
 const ALTOCELULA      = 10;
 const ELEMENTOCANVAS  = 'tablero';
-const TIEMPOANIMACION = 1000/10;         
+const TIEMPOANIMACION = 1000/10;
 
 class Juego {
 	private elementoHTML;
@@ -15,6 +15,7 @@ class Juego {
 	private celula      = { ancho: 0, alto: 0, cantidadX: 0, cantidadY: 0 };
 	private mundo;
 	private buffer;
+	private temporizador;
 
 	constructor() {
 		this.elementoHTML = document.getElementById(ELEMENTOCANVAS);
@@ -24,6 +25,7 @@ class Juego {
 		// Inicalizacion de matrices
 		this.mundo        = [];
 		this.buffer       = [];
+		this.temporizador = 0;
 	}
 
 	public iniciar() {
@@ -36,7 +38,18 @@ class Juego {
 		this.limpiar();
 		this.dibujar();
 		this.actualizar();
-		setTimeout(this.iniciarMotor, TIEMPOANIMACION);
+		this.temporizador = setTimeout(this.iniciarMotor, TIEMPOANIMACION);
+	}
+
+	public toggleMotor(elemento: HTMLElement) {
+		if(this.temporizador > 0) {
+			clearTimeout(this.temporizador);
+			this.temporizador = 0;
+			elemento.innerHTML = 'Iniciar';
+		}else {
+			this.iniciarMotor();
+			elemento.innerHTML = 'Parar';
+		}
 	}
 
 	public limpiar() {
