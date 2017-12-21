@@ -7,6 +7,7 @@ const ANCHOCELULA     = 10;
 const ALTOCELULA      = 10;
 const ELEMENTOCANVAS  = 'tablero';
 const TIEMPOANIMACION = 1000/10;
+const CONTROLTOGGLE   = 'btn-toggle';
 
 class Juego {
 	private elementoHTML;
@@ -16,6 +17,7 @@ class Juego {
 	private mundo;
 	private buffer;
 	private temporizador;
+	private btnToggle;
 
 	constructor() {
 		this.elementoHTML = document.getElementById(ELEMENTOCANVAS);
@@ -26,6 +28,8 @@ class Juego {
 		this.mundo        = [];
 		this.buffer       = [];
 		this.temporizador = 0;
+		this.btnToggle    = document.getElementById(CONTROLTOGGLE);
+
 	}
 
 	public iniciar() {
@@ -41,19 +45,20 @@ class Juego {
 		this.temporizador = setTimeout(this.iniciarMotor, TIEMPOANIMACION);
 	}
 
-	public toggleMotor(elemento: HTMLElement) {
+	public toggleMotor() {
 		if(this.temporizador > 0) {
 			clearTimeout(this.temporizador);
-			this.temporizador = 0;
-			elemento.innerHTML = 'Iniciar';
+			this.temporizador        = 0;
+			this.btnToggle.innerHTML = 'Iniciar';
 		}else {
 			this.iniciarMotor();
-			elemento.innerHTML = 'Parar';
+			this.btnToggle.innerHTML = 'Parar';
 		}
 	}
 
 	public reiniciar() {
 		clearTimeout(this.temporizador);
+		this.btnToggle.innerHTML = 'Parar';
 		this.iniciar();
 	}
 
