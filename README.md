@@ -73,7 +73,7 @@ Kevin Guzmán (kevocde) - [@kevindanielgu15](https://twitter.com/KevinDanielGu15
 [stars-url]: https://github.com/kevocde/life-game/stargazers
 [issues-shield]: https://img.shields.io/github/issues/kevocde/life-game.svg?style=for-the-badge
 [issues-url]: https://github.com/kevocde/life-game/issues
-[license-shield]: https://img.shields.io/github/license/kevocde/life-game.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/kevocde/life-game.svg?style=for-the-badge&logo=mit
 [license-url]: https://github.com/kevocde/life-game/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kevocode
