@@ -74,7 +74,7 @@ Kevin Guzmán (kevocde) - [@kevindanielgu15](https://twitter.com/KevinDanielGu15
 [issues-shield]: https://img.shields.io/github/issues/kevocde/life-game.svg?style=for-the-badge
 [issues-url]: https://github.com/kevocde/life-game/issues
 [license-shield]: https://img.shields.io/github/license/kevocde/life-game.svg?style=for-the-badge
-[license-url]: https://github.com/kevocde/life-game/blob/master/LICENSE.txt
+[license-url]: https://github.com/kevocde/life-game/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kevocode
 [Webpack.js.org]: https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=white
