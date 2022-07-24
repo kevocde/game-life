@@ -9,16 +9,16 @@
 	<div class="contenedor">
 		<div class="centrado">
 			<h2 class="titulo">Juego de la vida</h2>
-			<canvas id="tablero" width="700" height="500"></canvas>
+			<canvas id="main-board" width="700" height="500"></canvas>
 			<div class="controles">
-				<button class="btn" id="btn-toggle" onclick="juego.toggleMotor()">Parar</button>
-				<button class="btn btn-advertencia" onclick="juego.reiniciar()">Reiniciar</button>
+				<button class="btn" id="toggle-btn">Iniciar</button>
+				<button class="btn btn-advertencia" id="reset-btn">Reiniciar</button>
 			</div>
 		</div>
 	</div>
 	<div class="etiqueta-creador">
 		<p>Creado por: <strong>Kevin Guzman</strong></p>
 	</div>
-	<script src="app.js"></script>
+	<script src="/dist/bundle.js"></script>
 </body>
 </html>
