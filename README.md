@@ -7,7 +7,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/kevocde/life-game">
+  <a href="https://github.com/kevocde/game-life">
     <img src="src/assets/logo.png" alt="Logo" width="100" height="100">
   </a>
   <h2 align="center">Game Of Life</h2>
@@ -15,14 +15,14 @@
     This is one version of my favorite automaton game: <strong>Game of Life</strong> 
     originally created by <strong>John Horton Conway</strong>.
     <br />
-    <a href="https://github.com/kevocde/life-game"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/kevocde/game-life"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/kevocde/life-game">View Demo</a>
+    <a href="https://github.com/kevocde/game-life">View Demo</a>
     ·
-    <a href="https://github.com/kevocde/life-game/issues">Report Bug</a>
+    <a href="https://github.com/kevocde/game-life/issues">Report Bug</a>
     ·
-    <a href="https://github.com/kevocde/life-game/issues">Request Feature</a>
+    <a href="https://github.com/kevocde/game-life/issues">Request Feature</a>
   </p>
 </div>
 
@@ -46,7 +46,7 @@ with this I only pretend improve my skills in **JavaScript**, **HTML**, **CSS** 
 #### Installation
 1. Clone the repo
   ```shell
-    git clone https://github.com/kevocde/life-game.git -b main
+    git clone https://github.com/kevocde/game-life.git -b main
   ```
 2. Install dependences
   ```
@@ -65,16 +65,16 @@ See more about this in [OpenSource MIT Licenses](https://opensource.org/licenses
 ### Contact
 Kevin Guzmán (kevocde) - [@kevindanielgu15](https://twitter.com/KevinDanielGu15) - [kevocde@gmail.com](mailto:kevocde@gmail.com)
 
-[contributors-shield]: https://img.shields.io/github/contributors/kevocde/life-game.svg?style=for-the-badge
-[contributors-url]: https://github.com/kevocde/life-game/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kevocde/life-game.svg?style=for-the-badge
-[forks-url]: https://github.com/kevocde/life-game/network/members
-[stars-shield]: https://img.shields.io/github/stars/kevocde/life-game.svg?style=for-the-badge
-[stars-url]: https://github.com/kevocde/life-game/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kevocde/life-game.svg?style=for-the-badge
-[issues-url]: https://github.com/kevocde/life-game/issues
-[license-shield]: https://img.shields.io/github/license/kevocde/life-game.svg?style=for-the-badge&logo=mit
-[license-url]: https://github.com/kevocde/life-game/blob/main/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/kevocde/game-life.svg?style=for-the-badge
+[contributors-url]: https://github.com/kevocde/game-life/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/kevocde/game-life.svg?style=for-the-badge
+[forks-url]: https://github.com/kevocde/game-life/network/members
+[stars-shield]: https://img.shields.io/github/stars/kevocde/game-life.svg?style=for-the-badge
+[stars-url]: https://github.com/kevocde/game-life/stargazers
+[issues-shield]: https://img.shields.io/github/issues/kevocde/game-life.svg?style=for-the-badge
+[issues-url]: https://github.com/kevocde/game-life/issues
+[license-shield]: https://img.shields.io/github/license/kevocde/game-life.svg?style=for-the-badge&logo=mit
+[license-url]: https://github.com/kevocde/game-life/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kevocode
 [Webpack.js.org]: https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=white
