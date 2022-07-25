@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/kevocde/game-life">
-    <img src="src/assets/logo.png" alt="Logo" width="100" height="100">
+    <img src="public/logo.png" alt="Logo" width="100" height="100">
   </a>
   <h2 align="center">Game Of Life</h2>
   <p align="center">
