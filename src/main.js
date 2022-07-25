@@ -2,6 +2,8 @@
  * Life Game script
  * Created by: Kevin Guzmán (kevocde@gmail.com)
  */
+require('./assets/main.css')
+
 const _ = require('lodash')
 
 const CELL_SIZE = 10
