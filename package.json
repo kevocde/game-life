@@ -2,8 +2,11 @@
     "name": "juego-de-la-vida",
     "version": "1.0.0",
     "description": "Juego de la vida de Jhon Horton Conway, animacion en javascript.",
+    "homepage": "https://kevocde.github.io/game-life",
     "main": "js/main.js",
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "build": "webpack --mode development",
         "watch": "webpack --watch --mode development",
         "serve": "npx webpack serve --mode development",
@@ -21,7 +24,6 @@
     "bugs": {
         "url": "https://github.com/kevindanielguzmen98/juego-vida-js/issues"
     },
-    "homepage": "https://github.com/kevindanielguzmen98/juego-vida-js#readme",
     "dependencies": {
         "lodash": "^4.17.21"
     },
@@ -32,6 +34,7 @@
         "babel-loader": "^8.2.5",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.1",
+        "gh-pages": "^4.0.0",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "^2.6.1",
         "postcss": "^8.4.14",
