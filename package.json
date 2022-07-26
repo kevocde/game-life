@@ -6,7 +6,7 @@
     "main": "js/main.js",
     "scripts": {
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "deploy": "gh-pages -d dist",
         "build": "webpack --mode development",
         "watch": "webpack --watch --mode development",
         "serve": "npx webpack serve --mode development",
