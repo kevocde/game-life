@@ -18,7 +18,7 @@
     <a href="https://github.com/kevocde/game-life"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/kevocde/game-life">View Demo</a>
+    <a href="https://kevocde.github.io/game-life">View Demo</a>
     ·
     <a href="https://github.com/kevocde/game-life/issues">Report Bug</a>
     ·
