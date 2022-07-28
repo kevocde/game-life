@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Juego de la vida</title>
-<script defer src="assets/bundle.c3978164d9fb3e790e35.js"></script><link href="assets/bundle.c3978164d9fb3e790e35.css" rel="stylesheet"></head>
-<body class="color-fondo">
-	<div class="contenedor">
-		<div class="centrado">
-			<h2 class="titulo">Juego de la vida</h2>
-			<canvas id="main-board" width="700" height="500"></canvas>
-			<img src="public/logo.png" alt="">
-			<div class="controles">
-				<button class="btn" id="toggle-btn">Iniciar</button>
-				<button class="btn btn-advertencia" id="reset-btn">Reiniciar</button>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game of the life</title>
+<script defer src="assets/bundle.4258b7b694afdb132173.js"></script><link href="assets/bundle.4258b7b694afdb132173.css" rel="stylesheet"></head>
+<body>
+	<div class="container mx-auto">
+		<div class="flex-col justify-center items-center h-full">
+			<h2 class="py-4 mb-8 text-center text-2xl uppercase">Juego de la vida</h2>
+			<div class="flex px-4 items-center">
+				<canvas class="w-full min-h-[500px]" id="main-board"></canvas>
+			</div>
+			<div class="p-4 flex gap-x-1 justify-center">
+				<button class="p-2 bg-sky-500 rounded-md flex-1 max-w-xs text-base text-white uppercase" id="toggle-btn">Iniciar</button>
+				<button class="p-2 bg-red-500 rounded-md flex-1 max-w-xs text-base text-white uppercase" id="reset-btn">Reiniciar</button>
 			</div>
 		</div>
 	</div>
