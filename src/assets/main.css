@@ -1,16 +1,12 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css?family=Bungee');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 * {
-	padding: 0;
-	margin: 0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	font-family: 'Bungee', cursive;
+	font-family: 'Press Start 2P', cursive;
+	font-size: 12px;
 }
 
 .contenedor {
@@ -33,11 +29,6 @@
 	background-color: rgba(0,0,0,.1);
 }
 
-canvas {
-	border: 2px solid #3F51B5;
-	background-color: #fff;
-	border-radius: 2px;
-}
 
 .etiqueta-creador {
 	cursor: pointer;
