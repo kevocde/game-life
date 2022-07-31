@@ -5,24 +5,24 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Game of the life</title>
 </head>
-<body>
-<div class="container mx-auto">
-  <div class="flex-col justify-center items-center h-full">
-    <h2 class="py-4 mb-8 text-center text-2xl uppercase">Juego de la vida</h2>
-    <div class="flex px-4 items-center">
-      <canvas class="w-full min-h-[500px]" id="main-board"></canvas>
-    </div>
-    <div class="p-4 flex gap-x-1 justify-center">
-      <button class="p-2 bg-sky-500 rounded-md flex-1 max-w-xs text-base text-white uppercase" id="toggle-btn">Iniciar
-      </button>
-      <button class="p-2 bg-red-500 rounded-md flex-1 max-w-xs text-base text-white uppercase" id="reset-btn">
-        Reiniciar
-      </button>
+<body class="bg-sky-300">
+  <div class="container mx-auto">
+    <div class="flex-col justify-center items-center h-full">
+      <h2 class="py-8 text-sky-700 text-center text-2xl uppercase">Juego de la vida</h2>
+      <div class="flex px-4 justify-center">
+        <canvas class="bg-white w-2/3 outline outline-offset-4 outline-4 outline-sky-700" id="main-board"></canvas>
+      </div>
+      <div class="py-8 flex gap-x-2 justify-center">
+        <button class="p-3 px-5 bg-sky-700 max-w-xs text-base text-sky-200 uppercase" id="toggle-btn">Iniciar
+        </button>
+        <button class="py-3 px-5 bg-red-700 max-w-xs text-base text-red-200 uppercase" id="reset-btn">
+          Reiniciar
+        </button>
+      </div>
     </div>
   </div>
-</div>
-	<div class="etiqueta-creador">
-		<p>Creado por: <strong>Kevin Guzman</strong></p>
-	</div>
+  <div class="etiqueta-creador">
+    <p>Creado por: <strong>Kevin Guzman</strong></p>
+  </div>
 </body>
 </html>
