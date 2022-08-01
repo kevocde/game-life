@@ -6,8 +6,8 @@ require('./assets/main.css')
 
 const _ = require('lodash')
 
-const CELL_SIZE = 10
-const ANIMATION_TIME = 1000/70
+const CELL_SIZE = 15
+const ANIMATION_TIME = 1000/20
 const BOARD_ID = 'main-board'
 const TOGGLE_BTN_ID = 'toggle-btn'
 const RESET_BTN_ID = 'reset-btn'
@@ -17,11 +17,31 @@ class Game {
     /** Elements and Events */
     this.toggleBtn = document.getElementById(TOGGLE_BTN_ID)
     this.resetBtn = document.getElementById(RESET_BTN_ID)
-    this.htmlElement = document.getElementById(BOARD_ID)
-    this.context = this.htmlElement.getContext('2d')
+    this.loadBoardProps()
 
     this.addEvents()
     this.defineStateProperties()
+  }
+
+  loadBoardProps() {
+    let original = document.getElementById(BOARD_ID)
+    const canvas = document.createElement('canvas')
+    const props = {
+      'class': original.classList,
+      'id': original.id,
+      'width': Math.floor(original.clientWidth),
+      'height': Math.floor(original.clientWidth * 0.7),
+    }
+    canvas.setAttribute('id', props.id + '-canvas')
+    canvas.setAttribute('class', props.class.toString())
+    canvas.setAttribute('width', props.width)
+    canvas.setAttribute('height', props.height)
+
+    original.classList.add('hidden')
+    original.parentElement.appendChild(canvas)
+
+    this.htmlElement = document.getElementById(BOARD_ID + '-canvas')
+    this.context = this.htmlElement.getContext('2d')
   }
 
   addEvents() {
@@ -44,8 +64,8 @@ class Game {
     this.cell = {
       width: CELL_SIZE,
       height: CELL_SIZE,
-      xCount: (this.dimentions.width / CELL_SIZE),
-      yCount: (this.dimentions.height / CELL_SIZE),
+      xCount: Math.floor(this.dimentions.width / CELL_SIZE),
+      yCount: Math.floor(this.dimentions.height / CELL_SIZE),
     }
     this.world = this.generateAleatory(0, 1)
     this.buffer = this.generateAleatory()
@@ -56,21 +76,24 @@ class Game {
 
     if (this.running) {
       this.start()
-      this.toggleBtn.innerText = 'Detener'
+      this.toggleBtn.innerText = 'Stop'
     } else {
-      this.toggleBtn.innerText = 'Continuar'
+      this.toggleBtn.innerText = 'Resume'
     }
   }
 
   resetAnimation() {
-    window.cancelAnimationFrame(this.requestAnimationId)
-
-    this.world = this.generateAleatory(0, 1)
-    this.buffer = this.generateAleatory()
     this.running = false
-    this.toggleBtn.innerText = 'Iniciar'
+    setTimeout(
+      () => {
+        this.clean()
 
-    this.clean()
+        this.world = this.generateAleatory(0, 1)
+        this.buffer = this.generateAleatory()
+        this.toggleBtn.innerText = 'Start'
+      },
+      ANIMATION_TIME*2
+    )
   }
 
   generateAleatory(min=0, max=0) {
@@ -155,4 +178,6 @@ class Game {
   }
 }
 
-new Game()
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {new Game()}, 1000)
+})
