@@ -30,10 +30,10 @@
 This project is my interpretation of the Game Of Life, 
 with this I only pretend improve my skills in **JavaScript**, **HTML**, **CSS** and **Webpack**.
 
-### Build with
-* [![Webpack][Webpack.js.org]][webpack-url]
-* [![Lodash][Lodash.com]][lodash-url]
-* [![Tailwindcss][Tailwindcss.com]][tailwindcss-url]
+### Built with
+[![Html][Html.com]][Html-url] [![Css][Css.com]][Css-url] [![JavaScript][JavaScript.com]][JavaScript-url]
+[![Webpack][Webpack.js.org]][webpack-url] [![Lodash][Lodash.com]][lodash-url] 
+[![Tailwindcss][Tailwindcss.com]][tailwindcss-url]
 
 ### Getting Started
 #### Prerequisites
@@ -77,9 +77,18 @@ Kevin Guzmán (kevocde) - [@kevindanielgu15](https://twitter.com/KevinDanielGu15
 [license-url]: https://github.com/kevocde/game-life/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/kevocode
+
+
+
 [Webpack.js.org]: https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=white
 [webpack-url]: https://webpack.js.org
 [Lodash.com]: https://img.shields.io/badge/lodash-3492FF?style=for-the-badge&logo=lodash&&logoColor=white
 [Lodash-url]: https://lodash.com
 [Tailwindcss.com]: https://img.shields.io/badge/tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&&logoColor=white
 [Tailwindcss-url]: https://tailwindcss.com
+[Html.com]: https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&&logoColor=white
+[Html-url]: https://www.w3schools.com/html/html_intro.asp
+[Css.com]: https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&&logoColor=white
+[Css-url]: https://www.w3schools.com/css/
+[JavaScript.com]: https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&&logoColor=white
+[JavaScript-url]: https://www.w3schools.com/js/
