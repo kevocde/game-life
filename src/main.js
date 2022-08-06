@@ -8,19 +8,26 @@ const _ = require('lodash')
 
 const CELL_SIZE = 15
 const ANIMATION_TIME = 1000/20
+const PERCENTAGE_POPULATION = 0.8
 const BOARD_ID = 'main-board'
 const TOGGLE_BTN_ID = 'toggle-btn'
 const RESET_BTN_ID = 'reset-btn'
+const CLEAN_BTN_ID = 'clean-btn'
+const ALIVE_TXT_ID = 'txt-alive'
+const CYCLE_TXT_ID = 'txt-cycle'
 
 class Game {
   constructor() {
     /** Elements and Events */
     this.toggleBtn = document.getElementById(TOGGLE_BTN_ID)
     this.resetBtn = document.getElementById(RESET_BTN_ID)
+    this.cleanBtn = document.getElementById(CLEAN_BTN_ID)
+    this.aliveTxt = document.getElementById(ALIVE_TXT_ID)
+    this.cycleTxt = document.getElementById(CYCLE_TXT_ID)
     this.loadBoardProps()
 
-    this.addEvents()
     this.defineStateProperties()
+    this.addEvents()
   }
 
   loadBoardProps() {
@@ -38,7 +45,7 @@ class Game {
     canvas.setAttribute('height', props.height)
 
     original.classList.add('hidden')
-    original.parentElement.appendChild(canvas)
+    original.parentElement.prepend(canvas)
 
     this.htmlElement = document.getElementById(BOARD_ID + '-canvas')
     this.context = this.htmlElement.getContext('2d')
@@ -52,10 +59,39 @@ class Game {
     if (this.resetBtn) {
       this.resetBtn.addEventListener('click', this.resetAnimation.bind(this))
     }
+
+    if (this.resetBtn) {
+      this.cleanBtn.addEventListener('click', this.cleanAnimation.bind(this))
+    }
+
+    if (this.htmlElement) {
+      this.htmlElement.addEventListener('mousedown', (event) => { this.toggleCell(event) })
+    }
+  }
+
+  cleanAnimation() {
+    if (this.running) this.toggleAnimation()
+    this.world = this.generateAleatory()
+    this.alive = 0
+    this.cycle = 0
+  }
+
+  toggleCell(event) {
+    const rect = this.htmlElement.getBoundingClientRect()
+    const coordinates = {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
+    }
+
+    coordinates.xCell = Math.floor(coordinates.x / this.cell.width)
+    coordinates.yCell = Math.floor(coordinates.y / this.cell.height)
+
+    this.world[coordinates.xCell][coordinates.yCell] = !(!!this.world[coordinates.xCell][coordinates.yCell]);
+    this.alive += this.world[coordinates.xCell][coordinates.yCell] ? 1 : -1
   }
 
   defineStateProperties() {
-    this.requestAnimationId = null
+    this.requestAnimation = null
     this.running = false
     this.dimentions = {
       width: this.htmlElement.width,
@@ -67,46 +103,44 @@ class Game {
       xCount: Math.floor(this.dimentions.width / CELL_SIZE),
       yCount: Math.floor(this.dimentions.height / CELL_SIZE),
     }
-    this.world = this.generateAleatory(0, 1)
+    this.world = this.generateAleatory(PERCENTAGE_POPULATION)
     this.buffer = this.generateAleatory()
+    this.alive = Math.floor(this.cell.xCount * PERCENTAGE_POPULATION)
+    this.cycle = 0
   }
 
   toggleAnimation() {
     this.running = ! this.running
+    this.toggleBtn.innerText = this.running ? 'Stop' : 'Resume'
 
-    if (this.running) {
-      this.start()
-      this.toggleBtn.innerText = 'Stop'
-    } else {
-      this.toggleBtn.innerText = 'Resume'
-    }
+    if (this.running && this.requestAnimation === null) this.start()
   }
 
   resetAnimation() {
     this.running = false
-    setTimeout(
-      () => {
-        this.clean()
-
-        this.world = this.generateAleatory(0, 1)
-        this.buffer = this.generateAleatory()
-        this.toggleBtn.innerText = 'Start'
-      },
-      ANIMATION_TIME*2
-    )
+    this.toggleBtn.innerText = 'Start'
+    this.world = this.generateAleatory(PERCENTAGE_POPULATION)
+    this.buffer = this.generateAleatory()
+    this.alive = Math.floor((this.cell.xCount * this.cell.yCount) * PERCENTAGE_POPULATION)
+    this.cycle = 0
   }
 
-  generateAleatory(min=0, max=0) {
-    let matrix = []
+  generateAleatory(percentage = 0) {
+    let all_fields = _.fill(Array(this.cell.xCount * this.cell.yCount), 0)
+    let cells = Math.floor(all_fields.length * percentage)
+    let counter = 0
 
-    for (let i = 0; i < this.cell.xCount; i ++) {
-      matrix.push([])
-      for (let j = 0; j < this.cell.yCount; j ++) {
-        matrix[i][j] = _.random(min, max)
-      }
+    while (cells > 0) {
+      if (counter > all_fields.length - 1) counter = 0
+
+      all_fields[counter] = Math.random() >= 0.5
+
+      if (all_fields[counter]) cells --
+
+      counter ++
     }
 
-    return matrix
+    return JSON.parse(JSON.stringify(_.chunk(all_fields, this.cell.yCount)))
   }
 
   countNeighbors(x, y) {
@@ -144,6 +178,7 @@ class Game {
   }
 
   update() {
+    this.alive = 0
     this.buffer = JSON.parse(JSON.stringify(this.world))
     
     for (let i = 0; i < this.cell.xCount; i ++) {
@@ -156,6 +191,7 @@ class Game {
       for (let j = 0; j < this.cell.yCount; j ++) {
         if ((this.world[i][j] && this.buffer[i][j] >= 2 && this.buffer[i][j] <= 3) || (! this.world[i][j] && this.buffer[i][j] === 3)) {
           this.buffer[i][j] = 1
+          this.alive ++
         } else {
           this.buffer[i][j] = 0
         }
@@ -163,18 +199,25 @@ class Game {
     }
 
     this.world = JSON.parse(JSON.stringify(this.buffer))
+    this.cycle ++
+  }
+
+  updateCounters() {
+    this.aliveTxt.innerText = `${this.alive} of ${this.cell.xCount * this.cell.yCount}`
+    this.cycleTxt.innerText = this.cycle
   }
 
   start() {
     this.clean()
     this.draw()
-    this.update()
 
-    if (this.running) {
-      this.requestAnimationId = window.requestAnimationFrame(() => {
-        setTimeout(this.start.bind(this), ANIMATION_TIME)
-      })
-    }
+    if (this.running) this.update()
+
+    this.updateCounters()
+
+    this.requestAnimation = window.requestAnimationFrame(() => {
+      setTimeout(this.start.bind(this), ANIMATION_TIME)
+    })
   }
 }
 
